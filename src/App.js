@@ -13,6 +13,10 @@ const App = () => {
   const taskContents = useSelector(state => state.contentTaskReducer.tasksContents);
   const bgColours = ['blue', 'orange', 'yellow', 'purple', 'green', 'red', 'pink', 'blue_green', 'blue_pink',]
   
+  React.useEffect(() => {
+    document.title = 'REACT-TODO APP'
+  },);
+
   return (
     <div className="App">
       <div className="todo">

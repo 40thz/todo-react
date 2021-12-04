@@ -1,14 +1,14 @@
 import React, { Fragment } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import Title from '../Title'
 import Input from './Input'
-
+import ContentTaskTitle from './ContentTaskTitle'
+import EditBtn from './EditBtn'
+import { EDIT_MODE_CONTENT } from '../../store/actions'
 
 const ContentTask = () => {
     const dispatch = useDispatch()
     const selectItem = useSelector(state => state.selectTaskReducer.selected)
     const editModeContent = useSelector(state => state.contentTaskReducer.editMode);
-    const editModeName = useSelector(state => state.taskReducer.editMode);
     let tasks = useSelector(state => state.taskReducer.tasks);
 
     const openEdior = (type, payload) => {
@@ -19,23 +19,17 @@ const ContentTask = () => {
         <Fragment>
             {tasks.length !== 0 ?
                 <Fragment>
-                    <div className="todo-head">
-                        {editModeName ?
-
-                            <Input value={selectItem.name} editModeContent={editModeContent} selectItem={selectItem} /> :
-                            <Title name={selectItem ? selectItem.name : 'no task'}></Title>}
-                        <div onClick={() => openEdior('EDIT_MODE_NAME', editModeName)} className="edit"><img src="./edit.png" alt="edit-icon" /></div>
-                    </div>
+                    <ContentTaskTitle openEdior={openEdior} value={selectItem.name} editModeContent={editModeContent} selectItem={selectItem}/>
                     <div className='todo-content'>
                         <div className="todo__rightSide-content">
                             {editModeContent
                                 ?
-                                <Input value={selectItem.content}  editModeContent={editModeContent} selectItem={selectItem} /> :
-                                <span>{selectItem ? selectItem.content:''}
+                                <Input value={selectItem.content} editModeContent={editModeContent} selectItem={selectItem} /> :
+                                <span>{selectItem ? selectItem.content : ''}
                                 </span>
                             }
                         </div>
-                        <div onClick={() => openEdior('EDIT_MODE_CONTENT', editModeContent)} className="edit"><img src="./edit.png" alt="edit-icon" /></div>
+                       <EditBtn type={EDIT_MODE_CONTENT} payload={editModeContent} />
                     </div>
 
                 </Fragment> :

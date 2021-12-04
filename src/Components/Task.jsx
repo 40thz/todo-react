@@ -2,7 +2,7 @@ import React from 'react'
 import classnames from 'classnames'
 import { useSelector, useDispatch } from 'react-redux'
 import RemoveBtn from './RemoveBtn'
-import { ADD_SELECT_TASK } from '../store/actions/selectTaskAction'
+import { ADD_SELECT_TASK } from '../store/actions/'
 
 const Task = () => {
 

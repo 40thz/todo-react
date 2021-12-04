@@ -1,31 +1,19 @@
 import React, { Fragment } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { ADD_TASK_CONTENT, ADD_SELECT_TASK } from '../../store/actions'
 
-const CreateContentTask = ({ setSelectTask, active }) => {
+const CreateContentTask = () => {
     const [inpValue, setInpValue] = React.useState();
     const dispatch = useDispatch();
     const tasks = useSelector(state => state.taskReducer.tasks);
 
+    const filterItemName = tasks.filter(item => item.id === tasks[tasks.length - 1].id)
+    const addedObj = {id: tasks[tasks.length - 1].id,content: inpValue}
+    const addedSelectedObj =  {id: tasks[tasks.length - 1].id,name: filterItemName[0].name,content: inpValue}
+   
     const addContent = () => {
-        const filterItemName = tasks.filter(item => item.id === tasks[tasks.length - 1].id)
-
-        dispatch({
-            type: 'ADD_TASK_CONTENT',
-            payload: {
-                id: tasks[tasks.length - 1].id,
-                content: inpValue
-            }
-        })
-
-        dispatch(
-            {
-                type: 'ADD_SELECT_TASK',
-                payload: {
-                    id: tasks[tasks.length - 1].id,
-                    name: filterItemName[0].name,
-                    content: inpValue
-                }
-            })
+        dispatch(ADD_TASK_CONTENT(addedObj))
+        dispatch(ADD_SELECT_TASK(addedSelectedObj))
     }
 
     return (

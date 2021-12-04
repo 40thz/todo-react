@@ -1,7 +1,7 @@
 import React from 'react'
 import AddPanel from './AddPanel'
 import { useSelector, useDispatch } from 'react-redux'
-import { OPEN_PANEL } from '../store/actions/btnAction'
+import { OPEN_PANEL } from '../store/actions/'
 
 const AddBtn = ({ name, bgColours, setTask, tasks }) => {
 

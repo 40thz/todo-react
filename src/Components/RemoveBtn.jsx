@@ -1,8 +1,6 @@
 import React, { Fragment } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { REMOVE_TASK } from '../store/actions/taskAction'
-import { REMOVE_TASK_CONTENT } from '../store/actions/contentTaskAction'
-import { ADD_SELECT_TASK } from '../store/actions/selectTaskAction'
+import { REMOVE_TASK, REMOVE_TASK_CONTENT, ADD_SELECT_TASK  } from '../store/actions/'
 
 const RemoveBtn = ({ id }) => {
     const dispatch = useDispatch();

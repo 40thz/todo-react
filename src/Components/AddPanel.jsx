@@ -2,8 +2,7 @@ import classNames from 'classnames'
 import React from 'react'
 import Color from './Color'
 import Title from './Title'
-import { OPEN_PANEL } from '../store/actions/btnAction'
-import { ADD_TASK } from '../store/actions/taskAction'
+import { OPEN_PANEL, ADD_TASK } from '../store/actions/'
 import { useDispatch, useSelector } from 'react-redux'
 
 const AddPanel = ({ isOpen, bgColours, tasks }) => {
